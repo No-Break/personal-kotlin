@@ -11,10 +11,10 @@ class ScheduleController(var scheduleService: ScheduleService) {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    fun addSchedule(@RequestParam(value="title") title:String,
-                    @RequestParam(value="authority") authority:String,
-                    @RequestParam(value="appointedtime")appointedtime:String,
-                    @RequestParam(value="checkAlarm")checkAlarm:String):ResponseEntity<Schedule>{
+    fun addSchedule(@RequestParam title:String,
+                    @RequestParam authority:String,
+                    @RequestParam appointedtime:String,
+                    @RequestParam checkAlarm:String):ResponseEntity<Schedule>{
         return ResponseEntity.ok().body(scheduleService.addSchedule(title,authority,appointedtime,checkAlarm))
 
     }
