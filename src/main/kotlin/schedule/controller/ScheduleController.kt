@@ -19,4 +19,10 @@ class ScheduleController(var scheduleService: ScheduleService) {
 
     }
 
+    @DeleteMapping
+    @ResponseStatus(HttpStatus.OK)
+    fun deletePost(@PathVariable id: Long) {
+        return scheduleService.deleteSchedule(id)
+    }
+
 }
