@@ -11,11 +11,13 @@ class ScheduleController(var scheduleService: ScheduleService) {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    fun addSchedule(@RequestParam title:String,
-                    @RequestParam authority:String,
-                    @RequestParam appointedtime:String,
-                    @RequestParam checkAlarm:String):ResponseEntity<Schedule>{
-        return ResponseEntity.ok().body(scheduleService.addSchedule(title,authority,appointedtime,checkAlarm))
+    fun addSchedule(
+        @RequestParam title: String,
+        @RequestParam authority: String,
+        @RequestParam appointedtime: String,
+        @RequestParam checkAlarm: String
+    ): ResponseEntity<Schedule> {
+        return ResponseEntity.ok().body(scheduleService.addSchedule(title, authority, appointedtime, checkAlarm))
 
     }
 
@@ -23,6 +25,12 @@ class ScheduleController(var scheduleService: ScheduleService) {
     @ResponseStatus(HttpStatus.OK)
     fun deletePost(@PathVariable id: Long) {
         return scheduleService.deleteSchedule(id)
+    }
+
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    fun addSchedule(@RequestParam authority: String): ResponseEntity<Schedule> {
+        return ResponseEntity.ok().body(scheduleService.getSchedule(authority))
     }
 
 }
